@@ -107,7 +107,7 @@ CREATE DATABASE demo_test;
 ```bash
 docker-compose exec php bash
 php artisan migrate --seed --env=testing
-php artisan test
+php artisan test --testsuite=Feature
 ```
 
 
