@@ -17,7 +17,8 @@ class AttendanceCorrectionSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::find(2);
+        $user = User::find(2); // 一般ユーザー
+
         $attendances = Attendance::where('user_id', $user->id)
             ->orderByDesc('date')
             ->take(10)

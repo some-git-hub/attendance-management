@@ -19,7 +19,6 @@ class RestSeeder extends Seeder
 
         foreach ($attendances as $attendance) {
             if ($attendance->clock_out !== null) {
-                // 例: 昼休憩 12:00〜13:00
                 $rest_in  = Carbon::parse($attendance->date)->hour(12)->minute(0);
                 $rest_out = Carbon::parse($attendance->date)->hour(13)->minute(0);
 

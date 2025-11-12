@@ -73,6 +73,21 @@ class Attendance extends Model
 
 
     /**
+     * 現在の休憩合計時間の取得（分単位）
+     */
+    public function getCurrentRestMinutesAttribute()
+    {
+        $totalSeconds = $this->rests->sum(function ($rest) {
+            $start = Carbon::parse($rest->rest_in);
+            $end = $rest->rest_out ? Carbon::parse($rest->rest_out) : now();
+            return $end->diffInSeconds($start);
+        });
+
+        return intdiv($totalSeconds, 60);
+    }
+
+
+    /**
      * 合計勤務時間の取得
      */
     public function getWorkDurationAttribute()

@@ -16,9 +16,9 @@ class CreateRestCorrectionsTable extends Migration
         Schema::create('rest_corrections', function (Blueprint $table) {
             $table->id();
             $table->foreignId('attendance_correction_id')->constrained('attendance_corrections')->onDelete('cascade');
-            $table->foreignId('rest_id')->nullable()->constrained('rests')->nullOnDelete();  // 休憩時間の追加申請をするときは null
-            $table->time('rest_in')->nullable();   // 休憩時間の削除申請をするときは null
-            $table->time('rest_out')->nullable();  // 休憩時間の削除申請をするときは null
+            $table->foreignId('rest_id')->nullable()->constrained('rests')->nullOnDelete();
+            $table->time('rest_in')->nullable();
+            $table->time('rest_out')->nullable();
             $table->timestamps();
         });
     }
