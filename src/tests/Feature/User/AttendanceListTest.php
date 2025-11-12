@@ -128,6 +128,9 @@ class AttendanceListTest extends TestCase
             'clock_out' => '18:00:00',
         ]);
 
+        $response = $this->actingAs($user)->get(route('attendance.list'));
+        $response->assertStatus(200);
+
         $response = $this->actingAs($user)->get(route('attendance.show', $attendance->id));
         $response->assertStatus(200);
 

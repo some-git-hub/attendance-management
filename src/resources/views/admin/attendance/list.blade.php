@@ -8,6 +8,7 @@
 <div class="all__wrapper">
     <h2 class="attendance-list__title">{{ $currentDate->format('Y年m月d日') }}の勤怠</h2>
 
+    <!-- 月次ナビゲーション -->
     <div class="date-navigation__container">
         <a class="date-navigation__button-back" href="{{ route('admin.attendance.list', ['date' => $prevDate]) }}">
             <img class="date-navigation__image-left" src="{{ asset('images/left.png') }}" alt="left">
@@ -23,6 +24,7 @@
         </a>
     </div>
 
+    <!-- 月次勤怠一覧 -->
     <table class="attendance-list__container">
         <tr class="attendance-list__row-label">
             <th class="attendance-list__label">名前</th>
@@ -34,19 +36,36 @@
         </tr>
         @foreach($attendances as $attendance)
         <tr class="attendance-list__row-item">
-            <td class="attendance-list__item">{{ $attendance->user->name }}</td>
-            <td class="attendance-list__item">{{ $attendance->clock_in_formatted ?: '' }}</td>
-            <td class="attendance-list__item">{{ $attendance->clock_out_formatted ?: '' }}</td>
+            <!-- 名前 -->
+            <td class="attendance-list__item">
+                {{ $attendance->user->name }}
+            </td>
+
+            <!-- 出勤 -->
+            <td class="attendance-list__item">
+                {{ $attendance->clock_in_formatted ?: '' }}
+            </td>
+
+            <!-- 退勤 -->
+            <td class="attendance-list__item">
+                {{ $attendance->clock_out_formatted ?: '' }}
+            </td>
+
+            <!-- 休憩 -->
             <td class="attendance-list__item">
                 @if($attendance->rests->isNotEmpty())
                     {{ preg_replace('/^0(\d:)/', '$1', $attendance->current_rest_duration) }}
                 @endif
             </td>
+
+            <!-- 合計 -->
             <td class="attendance-list__item">
                 @if($attendance->clock_in_formatted && $attendance->clock_out_formatted)
                     {{ $attendance->work_duration }}
                 @endif
             </td>
+
+            <!-- 詳細ボタン -->
             <td class="attendance-list__item">
                 <form method="get" action="{{ $attendance->detailRoute }}">
                     @if(!$attendance->exists)

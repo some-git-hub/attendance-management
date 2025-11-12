@@ -11,6 +11,8 @@
         <h2 class="register-form__heading">
             会員登録
         </h2>
+
+        <!-- 名前の入力欄 -->
         <div class="register-form__container">
             <label class="register-form__label">
                 名前
@@ -26,6 +28,8 @@
                 @enderror
             </div>
         </div>
+
+        <!-- メールアドレスの入力欄 -->
         <div class="register-form__container">
             <label class="register-form__label">
                 メールアドレス
@@ -41,6 +45,8 @@
                 @enderror
             </div>
         </div>
+
+        <!-- パスワードの入力欄 -->
         <div class="register-form__container">
             <label class="register-form__label">
                 パスワード
@@ -56,6 +62,8 @@
                 @enderror
             </div>
         </div>
+
+        <!-- 確認用パスワードの入力欄 -->
         <div class="register-form__container">
             <label class="register-form__label">
                 パスワード確認
@@ -71,9 +79,13 @@
                 @enderror
             </div>
         </div>
+
+        <!-- 新規登録ボタン -->
         <div class="register-form__button-area">
             <button type="submit" class="register-form__button-submit">登録する</button>
         </div>
+
+        <!-- ログインリンク -->
         <div class="register-form__link-area">
             <a href="{{ route('login') }}" class="register-form__link-login">ログインはこちら</a>
         </div>

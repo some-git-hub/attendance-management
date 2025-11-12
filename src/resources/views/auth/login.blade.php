@@ -11,6 +11,8 @@
         <h2 class="login-form__heading">
             ログイン
         </h2>
+
+        <!-- メールアドレスの入力欄 -->
         <div class="login-form__container">
             <label class="login-form__label">
                 メールアドレス
@@ -26,6 +28,8 @@
                 @enderror
             </div>
         </div>
+
+        <!-- パスワードの入力欄 -->
         <div class="login-form__container">
             <label class="login-form__label">
                 パスワード
@@ -41,9 +45,13 @@
                 @enderror
             </div>
         </div>
+
+        <!-- ログインボタン -->
         <div class="login-form__button-area">
             <button type="submit" class="login-form__button-submit">ログインする</button>
         </div>
+
+        <!-- 会員登録リンク -->
         <div class="login-form__link-area">
             <a href="{{ route('register') }}" class="login-form__link-register">会員登録はこちら</a>
         </div>

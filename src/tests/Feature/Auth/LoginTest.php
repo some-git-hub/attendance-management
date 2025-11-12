@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class LoginTest extends TestCase
 {
     /**
-     * メールアドレスが未入力の場合はバリデーションメッセージが表示される
+     * メールアドレスが未入力の場合はバリデーションメッセージが表示される(一般ユーザー)
      */
     public function test_user_login_shows_error_when_email_is_empty()
     {
@@ -24,7 +24,7 @@ class LoginTest extends TestCase
 
 
     /**
-     * パスワードが未入力の場合はバリデーションメッセージが表示される
+     * パスワードが未入力の場合はバリデーションメッセージが表示される(一般ユーザー)
      */
     public function test_user_login_shows_error_when_password_is_empty()
     {
@@ -38,7 +38,7 @@ class LoginTest extends TestCase
 
 
     /**
-     * 入力情報が登録されていない場合はバリデーションメッセージが表示される
+     * 入力情報が登録されていない場合はバリデーションメッセージが表示される(一般ユーザー)
      */
     public function test_user_login_shows_error_when_credentials_are_invalid()
     {
@@ -57,7 +57,7 @@ class LoginTest extends TestCase
 
 
     /**
-     * 正しい情報が入力された場合はログイン処理が実行される
+     * 正しい情報が入力された場合はログイン処理が実行される(一般ユーザー)
      */
     public function test_it_logs_in_user_when_credentials_are_valid()
     {
@@ -80,7 +80,7 @@ class LoginTest extends TestCase
 
 
     /**
-     * ログアウト処理を実行できる
+     * ログアウト処理を実行できる(一般ユーザー)
      */
     public function test_it_logs_out_user()
     {

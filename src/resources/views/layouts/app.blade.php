@@ -40,8 +40,7 @@
     </header>
 
     <main>
-    @yield('content')
-    @yield('js')
+        @yield('content')
     </main>
 </body>
 </html>

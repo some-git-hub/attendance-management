@@ -16,8 +16,17 @@
         </tr>
         @foreach ($users as $user)
             <tr class="staff-list__row-item">
-                <td class="staff-list__item">{{ $user->name }}</td>
-                <td class="staff-list__item">{{ $user->email }}</td>
+                <!-- 名前 -->
+                <td class="staff-list__item">
+                    {{ $user->name }}
+                </td>
+
+                <!-- メールアドレス -->
+                <td class="staff-list__item">
+                    {{ $user->email }}
+                </td>
+
+                <!-- 月次勤怠（詳細ボタン） -->
                 <td class="staff-list__item">
                     <form method="get" action="{{ route('admin.staff-attendance.list', $user->id) }}">
                         <button type="submit" class="staff-list__button-detail">詳細</button>
@@ -27,6 +36,7 @@
         @endforeach
     </table>
 
+    <!-- ページネーション -->
     <div class="pagination">
         {{ $users->appends(request()->query())->links('pagination::bootstrap-4') }}
     </div>

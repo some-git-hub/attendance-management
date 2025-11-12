@@ -19,7 +19,7 @@ class AttendanceClockTest extends TestCase
         $response = $this->actingAs($user)->get(route('attendance.create'));
 
         $response->assertStatus(200);
-        $response->assertSeeText('出勤');
+        $response->assertSee('<button type="submit" class="button button-start">出勤</button>', false);
 
         $response = $this->actingAs($user)->post(route('attendance.start'));
 
@@ -45,8 +45,8 @@ class AttendanceClockTest extends TestCase
         Attendance::factory()->create([
             'user_id' => $user->id,
             'date' => Carbon::now()->format('Y-m-d'),
-            'clock_in' => '09:00:00',
-            'clock_out' => '18:00:00',
+            'clock_in' => '09:15:00',
+            'clock_out' => '18:15:00',
         ]);
 
         $response = $this->actingAs($user)->get(route('attendance.create'));
@@ -89,7 +89,7 @@ class AttendanceClockTest extends TestCase
         $response = $this->actingAs($user)->get(route('attendance.create'));
 
         $response->assertStatus(200);
-        $response->assertSeeText('退勤');
+        $response->assertSee('<button type="submit" class="button button-end">退勤</button>', false);
 
         $this->actingAs($user)->post(route('attendance.end'));
 
@@ -118,11 +118,11 @@ class AttendanceClockTest extends TestCase
             'user_id' => $user->id,
             'date' => Carbon::now()->format('Y-m-d'),
             'clock_in' => '09:00:00',
-            'clock_out' => '18:00:00',
+            'clock_out' => '18:15:00',
         ]);
 
         $response = $this->actingAs($user)->get(route('attendance.list'));
         $response->assertStatus(200);
-        $response->assertSeeText('18:00');
+        $response->assertSeeText('18:15');
     }
 }

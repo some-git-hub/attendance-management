@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class AdminLoginTest extends TestCase
 {
     /**
-     * メールアドレスが未入力の場合はバリデーションメッセージが表示される
+     * メールアドレスが未入力の場合はバリデーションメッセージが表示される(管理者)
      */
     public function test_admin_login_shows_error_when_email_is_empty()
     {
@@ -24,7 +24,7 @@ class AdminLoginTest extends TestCase
 
 
     /**
-     * パスワードが未入力の場合はバリデーションメッセージが表示される
+     * パスワードが未入力の場合はバリデーションメッセージが表示される(管理者)
      */
     public function test_admin_login_shows_error_when_password_is_empty()
     {
@@ -38,7 +38,7 @@ class AdminLoginTest extends TestCase
 
 
     /**
-     * 入力情報が登録されていない場合はバリデーションメッセージが表示される
+     * 入力情報が登録されていない場合はバリデーションメッセージが表示される(管理者)
      */
     public function test_admin_login_shows_error_when_credentials_are_invalid()
     {
@@ -58,7 +58,7 @@ class AdminLoginTest extends TestCase
 
 
     /**
-     * 正しい情報が入力された場合はログイン処理が実行される
+     * 正しい情報が入力された場合はログイン処理が実行される(管理者)
      */
     public function test_it_logs_in_admin_when_credentials_are_valid()
     {
@@ -81,7 +81,7 @@ class AdminLoginTest extends TestCase
 
 
     /**
-     * ログアウト処理を実行できる
+     * ログアウト処理を実行できる(管理者)
      */
     public function test_it_logs_out_admin()
     {

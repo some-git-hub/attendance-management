@@ -8,6 +8,7 @@
 <div class="all__wrapper">
     <h2 class="attendance-list__title">{{ $user->name }}さんの勤怠</h2>
 
+    <!-- 月次ナビゲーション -->
     <div class="month-navigation__container">
         <a class="month-navigation__button-back" href="{{ route('admin.staff-attendance.list', ['id' => $user->id, 'month' => $prevMonth]) }}">
             <img class="month-navigation__image-left" src="{{ asset('images/left.png') }}" alt="left">
@@ -23,6 +24,7 @@
         </a>
     </div>
 
+    <!-- 月次勤怠一覧 -->
     <table class="attendance-list__container">
         <tr class="attendance-list__row-label">
             <th class="attendance-list__label-date">日付</th>
@@ -34,19 +36,36 @@
         </tr>
         @foreach($attendances as $attendance)
         <tr class="attendance-list__row-item">
-            <td class="attendance-list__item-date">{{ $attendance->formatted_date }}</td>
-            <td class="attendance-list__item-arrival">{{ $attendance->clock_in_formatted ?: '' }}</td>
-            <td class="attendance-list__item-departure">{{ $attendance->clock_out_formatted ?: '' }}</td>
+            <!-- 日付 -->
+            <td class="attendance-list__item-date">
+                {{ $attendance->formatted_date }}
+            </td>
+
+            <!-- 出勤 -->
+            <td class="attendance-list__item-arrival">
+                {{ $attendance->clock_in_formatted ?: '' }}
+            </td>
+
+            <!-- 退勤 -->
+            <td class="attendance-list__item-departure">
+                {{ $attendance->clock_out_formatted ?: '' }}
+            </td>
+
+            <!-- 休憩 -->
             <td class="attendance-list__item-rest">
                 @if($attendance->rests->isNotEmpty())
                     {{ preg_replace('/^0(\d:)/', '$1', $attendance->current_rest_duration) }}
                 @endif
             </td>
+
+            <!-- 合計 -->
             <td class="attendance-list__item-total">
                 @if($attendance->clock_in_formatted && $attendance->clock_out_formatted)
                     {{ $attendance->work_duration }}
                 @endif
             </td>
+
+            <!-- 詳細ボタン -->
             <td class="attendance-list__item-detail">
                 <form method="get" action="{{ $attendance->detailRoute }}">
                     @if(!$attendance->exists)
@@ -60,6 +79,7 @@
         @endforeach
     </table>
 
+    <!-- CSV 出力ボタン -->
     <div class="attendance-list__button-area">
         <a href="{{ route('admin.staff-attendance.export', ['id' => $user->id, 'month' => $currentMonth->format('Y-m')]) }}" class="attendance-list__button-export">
             CSV出力

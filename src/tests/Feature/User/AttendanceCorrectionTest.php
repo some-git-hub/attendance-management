@@ -23,6 +23,9 @@ class AttendanceCorrectionTest extends TestCase
             'clock_out' => '18:00:00',
         ]);
 
+        $response = $this->actingAs($user)->get(route('attendance.show', $attendance->id));
+        $response->assertStatus(200);
+
         $response = $this->actingAs($user)->put(route('attendance.update', $attendance->id), [
             'clock_in' => '18:00',
             'clock_out' => '12:00',
@@ -48,6 +51,9 @@ class AttendanceCorrectionTest extends TestCase
             'clock_in' => '09:00:00',
             'clock_out' => '18:00:00',
         ]);
+
+        $response = $this->actingAs($user)->get(route('attendance.show', $attendance->id));
+        $response->assertStatus(200);
 
         $response = $this->actingAs($user)->put(route('attendance.update', $attendance->id), [
             'clock_in' => '09:00',
@@ -78,6 +84,9 @@ class AttendanceCorrectionTest extends TestCase
             'clock_out' => '18:00:00',
         ]);
 
+        $response = $this->actingAs($user)->get(route('attendance.show', $attendance->id));
+        $response->assertStatus(200);
+
         $response = $this->actingAs($user)->put(route('attendance.update', $attendance->id), [
             'clock_in' => '09:00',
             'clock_out' => '18:00',
@@ -107,6 +116,9 @@ class AttendanceCorrectionTest extends TestCase
             'clock_out' => '18:00:00',
         ]);
 
+        $response = $this->actingAs($user)->get(route('attendance.show', $attendance->id));
+        $response->assertStatus(200);
+
         $response = $this->actingAs($user)->put(route('attendance.update', $attendance->id), [
             'clock_in' => '09:00',
             'clock_out' => '18:00',
@@ -124,6 +136,7 @@ class AttendanceCorrectionTest extends TestCase
      */
     public function test_attendance_correction_request_is_created()
     {
+        $admin = User::factory()->create(['role' => 1]);
         $user = User::factory()->create();
 
         $attendance = Attendance::factory()->create([
@@ -133,6 +146,9 @@ class AttendanceCorrectionTest extends TestCase
             'clock_out' => '18:00:00',
             'remark' => '通常勤務',
         ]);
+
+        $response = $this->actingAs($user)->get(route('attendance.show', $attendance->id));
+        $response->assertStatus(200);
 
         $response = $this->actingAs($user)->put(route('attendance.update', $attendance->id), [
             'clock_in' => '09:15',
@@ -151,6 +167,26 @@ class AttendanceCorrectionTest extends TestCase
             'remark' => '修正申請',
             'status' => 0,
         ]);
+
+        $correction = AttendanceCorrection::where('attendance_id', $attendance->id)->first();
+
+        // 申請承認画面(管理者)
+        $response = $this->actingAs($admin)->get(route('admin.correction-approval.show', $correction->id));
+        $response->assertStatus(200);
+        $response->assertSeeText($user->name);
+        $response->assertSeeText('2025年');
+        $response->assertSeeText('1月10日');
+        $response->assertSee('09:15');
+        $response->assertSee('18:15');
+        $response->assertSeeText('修正申請');
+
+        // 申請一覧画面(管理者)
+        $response = $this->actingAs($admin)->get(route('attendance.correction-list'));
+        $response->assertStatus(200);
+        $response->assertSeeText('承認待ち');
+        $response->assertSeeText($user->name);
+        $response->assertSeeText('2025/01/10');
+        $response->assertSeeText('修正申請');
     }
 
 
@@ -221,19 +257,25 @@ class AttendanceCorrectionTest extends TestCase
 
         $attendance = Attendance::factory()->create([
             'user_id' => $user->id,
-            'date' => '2025-01-10'
+            'date' => '2025-01-10',
+            'clock_in' => '09:00:00',
+            'clock_out' => '18:00:00',
         ]);
 
-        $request = AttendanceCorrection::factory()->create([
-            'attendance_id' => $attendance->id,
-            'user_id' => $user->id,
-            'date' => '2025-01-10',
-            'status' => 1,
+        $response = $this->actingAs($user)->put(route('attendance.update', $attendance->id), [
+            'clock_in' => '09:15',
+            'clock_out' => '18:15',
+            'remark' => '修正申請',
         ]);
+
+        $response = $this->actingAs($user)->get(route('attendance.correction-list', ['status' => 1]));
+        $response->assertStatus(200);
 
         $response = $this->actingAs($user)->get(route('attendance.show', $attendance->id));
         $response->assertStatus(200);
         $response->assertSeeText('2025年');
         $response->assertSeeText('01月10日');
+        $response->assertSee('09:15');
+        $response->assertSee('18:15');
     }
 }

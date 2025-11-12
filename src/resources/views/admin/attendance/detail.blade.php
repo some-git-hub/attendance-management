@@ -6,16 +6,22 @@
 
 @section('content')
 <div class="all__wrapper">
+
+    <!-- 送信成功メッセージ -->
     @if (session('success'))
     <div class="alert-success">
         {{ session('success') }}
     </div>
     @endif
+
+    <!-- 送信フォーム -->
     <form method="post" action="{{ route('admin.attendance.update', ['id' => $attendance->exists ? $attendance->id : 'new']) }}">
         @csrf
         @method('PUT')
         <h2 class="detail-table__title">勤怠詳細</h2>
+
         <table class="detail-table__container">
+            <!-- 基本情報 -->
             <tr class="detail-table__row">
                 <th class="detail-table__label">名前</th>
                 <td class="detail-table__item">
@@ -29,6 +35,8 @@
                     <span class="detail-table__date">{{ $displayMonthDay }}</span>
                 </td>
             </tr>
+
+            <!-- 出勤・退勤時間の入力欄 -->
             <tr class="detail-table__row">
                 <th class="detail-table__label">出勤・退勤</th>
                 <td class="detail-table__item">
@@ -47,6 +55,8 @@
                     @enderror
                 </td>
             </tr>
+
+            <!-- 休憩時間の入力欄 -->
             @foreach($displayRests as $index => $rest)
             <tr class="detail-table__row">
                 <th class="detail-table__label">休憩{{ $loop->iteration }}</th>
@@ -68,6 +78,8 @@
                 </td>
             </tr>
             @endforeach
+
+            <!-- 備考の入力欄 -->
             <tr class="detail-table__row-last">
                 <th class="detail-table__label">備考</th>
                 <td class="detail-table__item">
@@ -80,6 +92,8 @@
                 </td>
             </tr>
         </table>
+
+        <!-- 修正ボタン（承認待ちの状態は非表示） -->
         @if ($isLocked)
         <div class="message-pending">
             <span>*承認待ちのため修正はできません。</span>

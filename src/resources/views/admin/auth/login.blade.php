@@ -11,6 +11,8 @@
         <h2 class="login-form__heading">
             管理者ログイン
         </h2>
+
+        <!-- メールアドレスの入力欄 -->
         <div class="login-form__container">
             <label class="login-form__label">
                 メールアドレス
@@ -26,6 +28,8 @@
                 @enderror
             </div>
         </div>
+
+        <!-- パスワードの入力欄 -->
         <div class="login-form__container">
             <label class="login-form__label">
                 パスワード
@@ -41,6 +45,8 @@
                 @enderror
             </div>
         </div>
+
+        <!-- 管理者ログインボタン -->
         <div class="login-form__button-area">
             <button type="submit" class="login-form__button-submit">管理者ログインする</button>
         </div>

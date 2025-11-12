@@ -25,7 +25,7 @@ class AttendanceRestTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('attendance.create'));
 
-        $response->assertSeeText('休憩入');
+        $response->assertSee('<button type="submit" class="button button-rest">休憩入</button>', false);
 
         $this->actingAs($user)->post(route('attendance.rest'));
         $response = $this->actingAs($user)->get(route('attendance.create'));
@@ -51,7 +51,7 @@ class AttendanceRestTest extends TestCase
         $this->actingAs($user)->post(route('attendance.resume'));
         $response = $this->actingAs($user)->get(route('attendance.create'));
 
-        $response->assertSeeText('休憩入');
+        $response->assertSee('<button type="submit" class="button button-rest">休憩入</button>', false);
     }
 
 
@@ -71,7 +71,7 @@ class AttendanceRestTest extends TestCase
         $this->actingAs($user)->post(route('attendance.rest'));
         $response = $this->actingAs($user)->get(route('attendance.create'));
 
-        $response->assertSeeText('休憩戻');
+        $response->assertSee('<button type="submit" class="button button-resume">休憩戻</button>', false);
 
         $this->actingAs($user)->post(route('attendance.resume'));
         $response = $this->actingAs($user)->get(route('attendance.create'));
@@ -98,7 +98,7 @@ class AttendanceRestTest extends TestCase
         $this->actingAs($user)->post(route('attendance.rest'));
         $response = $this->actingAs($user)->get(route('attendance.create'));
 
-        $response->assertSeeText('休憩戻');
+        $response->assertSee('<button type="submit" class="button button-resume">休憩戻</button>', false);
     }
 
 
