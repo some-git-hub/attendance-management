@@ -15,6 +15,8 @@
 
 ### Dockerビルド
 
+- 以下のコマンドでリポジトリをクローンし、Dockerコンテナをビルドして起動する。
+
 ```bash
 git clone git@github.com:some-git-hub/attendance-management.git
 cd attendance-management
@@ -27,7 +29,7 @@ docker-compose up -d --build
 
 ### Laravel 環境構築
 
-1. 依存パッケージのインストールと環境ファイルの作成
+1. 依存パッケージをインストールし、環境ファイルを作成する。
 
 ```bash
 docker-compose exec php bash
@@ -46,7 +48,7 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
-3. アプリケーションキー生成とDB初期化
+3. アプリケーションキーを生成し、DB初期化を実行する。
 
 ```bash
 php artisan key:generate
@@ -92,7 +94,7 @@ DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
-3. テスト用DBを作成する。(パスワード:**root**)
+3. テスト用DBを作成する。(パスワード：**root**)
 
 ```bash
 docker-compose exec mysql bash
@@ -125,7 +127,9 @@ php artisan test
 
 ## URL
 
-- 開発環境（一般ユーザーログイン画面）: http://localhost/login/
-- 開発環境（管理者ログイン画面）: http://localhost/admin/login/
-- phpMyAdmin: http://localhost:8080/
-- MailHog: http://localhost:8025/
+| 用途 | URL |
+|------|-----|
+| 一般ユーザーログイン画面 | http://localhost/login/ |
+| 管理者ログイン画面 | http://localhost/admin/login/ |
+| phpMyAdmin | http://localhost:8080/ |
+| MailHog | http://localhost:8025/ |
