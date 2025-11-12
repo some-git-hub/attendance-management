@@ -1,0 +1,151 @@
+.all__wrapper {
+    min-height: calc(100vh - 80px);
+    background-color: #F0EFF2;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.correction-list__title {
+    width: 64%;
+    padding-left: 20px;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 26px;
+    font-size: 30px;
+    text-align: left;
+    border-left: 8px solid #000;
+}
+
+.tabs {
+    width: 64%;
+    margin: 0 auto;
+    border-bottom: 1px solid #000;
+    text-align: left;
+}
+
+.tab {
+    padding: 15px 40px;
+    margin: 0 30px;
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tab.active {
+    font-weight: bold;
+}
+
+.correction-list__container {
+    width: 64%;
+    margin: 0 auto;
+    margin-top: 28px;
+    color: #737373;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 10px;
+    table-layout: fixed;
+}
+
+.correction-list__row-label {
+    height: 48px;
+    border-bottom: 3px solid #E1E1E1;
+    text-align: left;
+    letter-spacing: 2px;
+}
+
+.correction-list__label {
+    padding-left: 50px;
+}
+
+.correction-list__label:first-child {
+    width: 14%;
+    padding-left: 68px;
+}
+
+.correction-list__label:nth-child(2) {
+    width: 17%;
+}
+
+.correction-list__label:nth-child(3),
+.correction-list__label:nth-child(5) {
+    width: 17%;
+}
+
+.correction-list__label:last-child {
+    width: 17%;
+    padding-left: 55px;
+}
+
+.correction-list__row-item {
+    height: 48px;
+    border-bottom: 2px solid #E1E1E1;
+    text-align: left;
+    letter-spacing: 2px;
+}
+
+.correction-list__row-item:last-child {
+    border-bottom: none;
+}
+
+.correction-list__item {
+    padding-left: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.correction-list__item--date {
+    letter-spacing: 1px;
+}
+
+.correction-list__button-detail {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    border: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.correction-list__message {
+    height: 48px;
+    color: #666;
+    font-size: 18px;
+    text-align: center;
+}
+
+.pagination {
+    margin-top: 16px;
+    font-size: 20px;
+    display: flex;
+    position: absolute;
+    top: 422px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.page-link {
+    min-width: 32px;
+    padding: 2px 4px;
+    margin: 0 18px;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    transition: 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.page-link__left,
+.page-link__right {
+    font-size: 24px;
+    line-height: 1.1;
+}
+
+.page-item.active .page-link {
+    color: #fff;
+    background-color: #000;
+    border: none;
+}

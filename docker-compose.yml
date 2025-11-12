@@ -1,4 +1,4 @@
-version: '3.8'
+# version: '3.8'
 
 services:
   nginx:
@@ -10,13 +10,21 @@ services:
       - ./src:/var/www/
     depends_on:
       - php
+    networks:
+      - flea-network
 
   php:
+    container_name: php
     build: ./docker/php
     volumes:
       - ./src:/var/www/
+    ports:
+      - "8000:8000"
+    networks:
+      - flea-network
 
   mysql:
+    container_name: mysql
     image: mysql:8.0.26
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -25,9 +33,10 @@ services:
       MYSQL_PASSWORD: laravel_pass
     command:
       mysqld --default-authentication-plugin=mysql_native_password
-    volumes:
-      - ./docker/mysql/data:/var/lib/mysql
-      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - "3306:3306"
+    networks:
+      - flea-network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -40,3 +49,17 @@ services:
       - mysql
     ports:
       - 8080:80
+    networks:
+      - flea-network
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - flea-network
+
+networks:
+  flea-network:
+    driver: bridge

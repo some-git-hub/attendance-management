@@ -1,0 +1,69 @@
+.all__wrapper {
+    min-height: calc(100vh - 80px);
+    background-color: #F0EFF2;
+}
+
+.attendance-form {
+    text-align: center;
+}
+
+.attendance-status {
+    padding: 5px 20px;
+    margin-top: 240px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #696969;
+    background-color: #C8C8C8;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.button {
+    margin-top: 40px;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.button-start,
+.button-end {
+    padding: 10px 56px;
+    color: #fff;
+    background-color: #000;
+}
+
+.button-end {
+    margin-right: 80px;
+}
+
+.button-rest,
+.button-resume {
+    padding: 10px 40px;
+    color: #000;
+    background-color: #fff;
+}
+
+.attendance-form__inner{
+    display: flex;
+    justify-content: center;
+}
+
+.current-date{
+    margin: 0;
+    font-size: 40px;
+}
+
+.current-time {
+    margin: 20px;
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.message-end{
+    padding-left: 26px;
+    margin-top: 70px;
+    font-size: 26px;
+    font-weight: bold;
+}

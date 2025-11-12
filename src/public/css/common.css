@@ -1,0 +1,48 @@
+html {
+    overflow-y: scroll;
+}
+
+.header{
+    width: 100%;
+    height: 80px;
+    margin: 0 auto;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.header__inner{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.header-logo__image {
+    width: 400px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+}
+
+.nav-button {
+    width: 160px;
+    height: 50px;
+    margin-right: 6px;
+    color: #fff;
+    background-color: #000;
+    font-size: 24px;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

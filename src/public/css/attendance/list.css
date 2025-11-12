@@ -1,0 +1,143 @@
+.all__wrapper {
+    min-height: calc(100vh - 80px);
+    background-color: #F0EFF2;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.attendance-list__title {
+    width: 64%;
+    padding-left: 20px;
+    margin:0 auto;
+    margin-top: 80px;
+    font-size: 30px;
+    text-align: left;
+    border-left: 8px solid #000;
+}
+
+.month-navigation__container {
+    width: 64%;
+    height: 60px;
+    margin: 40px auto;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.month-navigation__current-month {
+    font-size: 20px;
+}
+
+.month-navigation__button-back {
+    padding: 8px;
+    margin-left: 32px;
+    margin-right: 5px;
+    color: #737373;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.month-navigation__button-next {
+    padding: 8px;
+    margin-left: 5px;
+    margin-right: 32px;
+    color: #737373;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.month-navigation__image-left,
+.month-navigation__image-right {
+    width: 20px;
+    height: 15px;
+    margin-bottom: 2px;
+}
+
+.month-navigation__image-calendar{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    margin-bottom: 6px;
+}
+
+.attendance-list__container {
+    width: 64%;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    color: #737373;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.attendance-list__row-label {
+    height: 48px;
+    border-bottom: 3px solid #E1E1E1;
+    letter-spacing: 2px;
+}
+
+.attendance-list__row-item {
+    height: 48px;
+    border-bottom: 2px solid #E1E1E1;
+    letter-spacing: 2px;
+}
+
+.attendance-list__row-item:last-child {
+    border-bottom: none;
+}
+
+.attendance-list__label-date,
+.attendance-list__item-date {
+    width: 120px;
+    padding-left: 60px;
+    text-align: left;
+}
+
+.attendance-list__label-detail,
+.attendance-list__item-detail {
+    width: 110px;
+    padding-right: 20px;
+}
+
+.attendance-list__item-arrival,
+.attendance-list__item-departure,
+.attendance-list__item-rest,
+.attendance-list__item-total{
+    width: 90px;
+}
+
+.attendance-list__button-detail {
+    padding: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    border: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.attendance-list__button-area {
+    width: 64%;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.attendance-list__button-export {
+    width: 184px;
+    height: 50px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 3px;
+}
