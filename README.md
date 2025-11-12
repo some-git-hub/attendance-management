@@ -46,8 +46,6 @@ DB_PASSWORD=laravel_pass
 
 6. `php artisan migrate --seed`
 
-7. `php artisan storage:link`
-
 
 ### MailHog 環境構築
 
