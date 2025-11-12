@@ -8,7 +8,7 @@
 <div class="all__wrapper">
     <h2 class="attendance-list__title">{{ $currentDate->format('Y年m月d日') }}の勤怠</h2>
 
-    <!-- 月次ナビゲーション -->
+    <!-- 日次ナビゲーション -->
     <div class="date-navigation__container">
         <a class="date-navigation__button-back" href="{{ route('admin.attendance.list', ['date' => $prevDate]) }}">
             <img class="date-navigation__image-left" src="{{ asset('images/left.png') }}" alt="left">
@@ -24,7 +24,7 @@
         </a>
     </div>
 
-    <!-- 月次勤怠一覧 -->
+    <!-- 日次勤怠一覧 -->
     <table class="attendance-list__container">
         <tr class="attendance-list__row-label">
             <th class="attendance-list__label">名前</th>
