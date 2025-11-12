@@ -15,9 +15,11 @@
 
 ### Dockerビルド
 
-1. `git clone git@github.com:some-git-hub/attendance-management.git`
-
-2. `docker-compose up -d --build`
+```bash
+git clone git@github.com:some-git-hub/attendance-management.git
+cd attendance-management
+docker-compose up -d --build
+```
 
 > MySQLはOSによって起動しない場合があるため、  
 > それぞれのPCに合わせて「docker-compose.yml」を編集してください。
@@ -25,13 +27,15 @@
 
 ### Laravel 環境構築
 
-1. `docker-compose exec php bash`
+1. 依存パッケージのインストールと環境ファイルの作成
 
-2. `composer install`
+```bash
+docker-compose exec php bash
+composer install
+cp .env.example .env
+```
 
-3. `cp .env.example .env`
-
-4. 「.env」に以下の環境変数を追記する。
+2. 「.env」に以下の環境変数を追記する。
 
 ```text
 DB_CONNECTION=mysql
@@ -42,9 +46,12 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
-5. `php artisan key:generate`
+3. アプリケーションキー生成とDB初期化
 
-6. `php artisan migrate --seed`
+```bash
+php artisan key:generate
+php artisan migrate --seed
+```
 
 
 ### MailHog 環境構築
